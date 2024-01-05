@@ -18,7 +18,11 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    protected WebElement waitElementIsVisibility(WebElement element) {
+    public String getUrlOnPage() {
+       return driver.getCurrentUrl();
+    }
+
+    protected WebElement waitElementIsInVisibility(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.invisibilityOf(element));
         return element;
